@@ -1,0 +1,15 @@
+id: failed_console_login
+title: Failed Console Login Attempt
+description: >
+  A console login attempt failed. A single failure is low-risk, but
+  repeated failures in a short window (see the brute_force correlation
+  rule) may indicate a password-guessing attack.
+severity: low
+logsource: cloudtrail
+detection:
+  selection:
+    eventName: ConsoleLogin
+    responseElements.ConsoleLogin: Failure
+  condition: selection
+tags:
+  - mitre_attack:T1110  # Brute Force

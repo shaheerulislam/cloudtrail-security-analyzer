@@ -1,0 +1,17 @@
+id: cloudtrail_logging_disabled
+title: CloudTrail Logging Stopped or Deleted
+description: >
+  Someone disabled or deleted a CloudTrail trail. This is a classic
+  anti-forensics technique used to cover tracks after an intrusion or
+  during a destructive insider action. Treat as a critical incident.
+severity: critical
+logsource: cloudtrail
+detection:
+  selection:
+    eventName:
+      - StopLogging
+      - DeleteTrail
+  condition: selection
+tags:
+  - mitre_attack:T1562.008  # Impair Defenses: Disable Cloud Logs
+  - anti_forensics

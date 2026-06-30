@@ -1,0 +1,14 @@
+id: new_iam_user_created
+title: New IAM User Created
+description: >
+  A new IAM user was created. Attackers commonly create new "backdoor"
+  users to maintain persistent access after their initial foothold is
+  discovered and remediated. Confirm this was an authorized onboarding.
+severity: medium
+logsource: cloudtrail
+detection:
+  selection:
+    eventName: CreateUser
+  condition: selection
+tags:
+  - mitre_attack:T1136.003  # Create Account: Cloud Account

@@ -1,0 +1,28 @@
+# Sigma-style detection rule schema reference:
+#
+# id:           unique slug for this rule
+# title:        short human-readable name
+# description:  what this detects and why it matters
+# severity:     low | medium | high | critical
+# logsource:    which log type this applies to (cloudtrail for now)
+# detection:
+#   field equality / membership checks (all conditions are AND'ed together
+#   within one "selection" block; multiple selections can be combined with
+#   the "condition" key, similar to real Sigma syntax)
+# tags:         free-form labels (e.g. mitre attack technique IDs)
+
+id: root_console_login
+title: Root Account Console Login
+description: >
+  The AWS root account should never be used for day-to-day operations.
+  Any root login is high-risk and should be investigated immediately.
+severity: high
+logsource: cloudtrail
+detection:
+  selection:
+    eventName: ConsoleLogin
+    userIdentity.type: Root
+  condition: selection
+tags:
+  - mitre_attack:T1078.004  # Valid Accounts: Cloud Accounts
+  - aws_best_practice

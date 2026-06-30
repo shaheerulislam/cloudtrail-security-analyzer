@@ -1,0 +1,21 @@
+id: iam_privilege_escalation
+title: Sensitive IAM Policy or Access Key Change
+description: >
+  An IAM action commonly used for privilege escalation or persistence
+  was performed (attaching admin policies, creating access keys, creating
+  login profiles for users, etc). Verify this was an authorized change.
+severity: medium
+logsource: cloudtrail
+detection:
+  selection:
+    eventName:
+      - AttachUserPolicy
+      - AttachRolePolicy
+      - PutUserPolicy
+      - PutRolePolicy
+      - CreateAccessKey
+      - CreateLoginProfile
+      - UpdateAssumeRolePolicy
+  condition: selection
+tags:
+  - mitre_attack:T1098  # Account Manipulation

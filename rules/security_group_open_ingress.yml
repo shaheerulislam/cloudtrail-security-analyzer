@@ -1,0 +1,18 @@
+id: security_group_open_ingress
+title: Security Group Rule Authorized (Potential Wide-Open Ingress)
+description: >
+  A security group ingress/egress rule was added or modified. Combined with
+  a 0.0.0.0/0 CIDR range, this can expose EC2 instances, databases, or
+  other resources directly to the internet. Verify the CIDR range and
+  port in the request parameters before dismissing.
+severity: medium
+logsource: cloudtrail
+detection:
+  selection:
+    eventName:
+      - AuthorizeSecurityGroupIngress
+      - AuthorizeSecurityGroupEgress
+      - ModifySecurityGroupRules
+  condition: selection
+tags:
+  - mitre_attack:T1562.007  # Impair Defenses: Disable or Modify Cloud Firewall

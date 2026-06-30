@@ -1,0 +1,286 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0001",
+      "eventTime": "2024-06-01T08:15:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "Mozilla/5.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "alice",
+        "accountId": "111122223333",
+        "sessionContext": {
+          "attributes": {
+            "mfaAuthenticated": "true",
+            "creationDate": "2024-06-01T08:15:00Z"
+          }
+        }
+      },
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      }
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0002",
+      "eventTime": "2024-06-01T03:22:11Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "Mozilla/5.0",
+      "userIdentity": {
+        "type": "Root",
+        "accountId": "111122223333",
+        "sessionContext": {
+          "attributes": {
+            "mfaAuthenticated": "false",
+            "creationDate": "2024-06-01T03:22:11Z"
+          }
+        }
+      },
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      }
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0003",
+      "eventTime": "2024-06-01T03:25:40Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "AttachUserPolicy",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "Root",
+        "accountId": "111122223333"
+      },
+      "requestParameters": {
+        "userName": "backdoor-user",
+        "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0004",
+      "eventTime": "2024-06-01T03:26:05Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "StopLogging",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "Root",
+        "accountId": "111122223333"
+      },
+      "requestParameters": {
+        "name": "main-trail"
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0005",
+      "eventTime": "2024-06-01T09:00:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "RunInstances",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "alice",
+        "accountId": "111122223333",
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE"
+      },
+      "requestParameters": {
+        "instanceType": "t3.micro"
+      },
+      "responseElements": {
+        "instancesSet": {
+          "items": [
+            {
+              "instanceId": "i-0123456789abcdef0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0006",
+      "eventTime": "2024-06-01T10:11:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.55",
+      "userAgent": "Mozilla/5.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "bob",
+        "accountId": "111122223333"
+      },
+      "errorCode": "Failed authentication",
+      "errorMessage": "Password did not match",
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      }
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0007",
+      "eventTime": "2024-06-02T14:00:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreateUser",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.200",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "mallory",
+        "accountId": "111122223333"
+      },
+      "requestParameters": {
+        "userName": "svc-backup-2"
+      },
+      "responseElements": {
+        "user": {
+          "userName": "svc-backup-2"
+        }
+      }
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0008",
+      "eventTime": "2024-06-02T14:05:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "AttachUserPolicy",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.200",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "mallory",
+        "accountId": "111122223333"
+      },
+      "requestParameters": {
+        "userName": "svc-backup-2",
+        "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0009",
+      "eventTime": "2024-06-02T14:10:00Z",
+      "eventSource": "guardduty.amazonaws.com",
+      "eventName": "DeleteDetector",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.200",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "mallory",
+        "accountId": "111122223333"
+      },
+      "requestParameters": {
+        "detectorId": "abc123"
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0010",
+      "eventTime": "2024-06-03T09:00:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "PutBucketAcl",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "alice",
+        "accountId": "111122223333"
+      },
+      "requestParameters": {
+        "bucketName": "company-data-backup",
+        "AccessControlPolicy": {
+          "AccessControlList": {
+            "Grant": [
+              {
+                "Grantee": {
+                  "URI": "http://acs.amazonaws.com/groups/global/AllUsers"
+                },
+                "Permission": "READ"
+              }
+            ]
+          }
+        }
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0011",
+      "eventTime": "2024-06-03T09:02:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "alice",
+        "accountId": "111122223333"
+      },
+      "errorCode": "AccessDenied",
+      "errorMessage": "Access Denied",
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0012",
+      "eventTime": "2024-06-04T22:00:00Z",
+      "eventSource": "kms.amazonaws.com",
+      "eventName": "ScheduleKeyDeletion",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.201",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "mallory2",
+        "accountId": "111122223333"
+      },
+      "requestParameters": {
+        "keyId": "abcd-1234",
+        "pendingWindowInDays": 7
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "eventID": "1a2b3c4d-0013",
+      "eventTime": "2024-06-04T22:05:00Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "StopLogging",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.201",
+      "userAgent": "aws-cli/2.13.0",
+      "userIdentity": {
+        "type": "IAMUser",
+        "userName": "mallory2",
+        "accountId": "111122223333"
+      },
+      "requestParameters": {
+        "name": "main-trail"
+      },
+      "responseElements": null
+    }
+  ]
+}

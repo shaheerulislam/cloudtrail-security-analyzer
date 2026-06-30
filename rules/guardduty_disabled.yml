@@ -1,0 +1,18 @@
+id: guardduty_disabled
+title: GuardDuty Detector Disabled or Deleted
+description: >
+  Amazon GuardDuty, AWS's own threat detection service, was disabled or
+  deleted. Like CloudTrail tampering, this is a hallmark anti-forensics
+  move — an attacker turning off the system that would otherwise catch
+  them. Treat as a critical incident.
+severity: critical
+logsource: cloudtrail
+detection:
+  selection:
+    eventName:
+      - DeleteDetector
+      - UpdateDetector
+  condition: selection
+tags:
+  - mitre_attack:T1562.001  # Impair Defenses: Disable or Modify Tools
+  - anti_forensics

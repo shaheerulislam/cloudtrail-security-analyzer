@@ -1,0 +1,19 @@
+id: s3_bucket_public_access
+title: S3 Bucket Public Access Configuration Changed
+description: >
+  An S3 bucket's public access block settings or ACL were modified. This
+  is one of the most common causes of accidental data breaches — verify
+  this change was intentional and that no sensitive data is now exposed.
+severity: high
+logsource: cloudtrail
+detection:
+  selection:
+    eventName:
+      - PutBucketAcl
+      - PutBucketPolicy
+      - PutPublicAccessBlock
+      - DeletePublicAccessBlock
+  condition: selection
+tags:
+  - mitre_attack:T1530  # Data from Cloud Storage
+  - data_exposure

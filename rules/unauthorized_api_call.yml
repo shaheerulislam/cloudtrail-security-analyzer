@@ -1,0 +1,18 @@
+id: unauthorized_api_call
+title: Unauthorized API Call (Access Denied)
+description: >
+  A request was denied due to insufficient permissions. A single denial is
+  often benign (misconfiguration, legitimate restriction), but repeated
+  denials from the same actor may indicate someone probing for accessible
+  permissions — a common reconnaissance technique after initial compromise.
+severity: low
+logsource: cloudtrail
+detection:
+  selection:
+    errorCode:
+      - AccessDenied
+      - UnauthorizedAccess
+      - Client.UnauthorizedOperation
+  condition: selection
+tags:
+  - mitre_attack:T1580  # Cloud Infrastructure Discovery

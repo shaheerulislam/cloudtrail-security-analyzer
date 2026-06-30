@@ -1,0 +1,17 @@
+id: kms_key_disabled_or_deleted
+title: KMS Key Disabled or Scheduled for Deletion
+description: >
+  A KMS encryption key was disabled or scheduled for deletion. If this key
+  protects encrypted data (S3, EBS, RDS, etc.), this can be a destructive
+  ransomware-style action that renders that data permanently unreadable.
+  Treat as high priority until confirmed authorized.
+severity: critical
+logsource: cloudtrail
+detection:
+  selection:
+    eventName:
+      - DisableKey
+      - ScheduleKeyDeletion
+  condition: selection
+tags:
+  - mitre_attack:T1486  # Data Encrypted for Impact
